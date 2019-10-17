@@ -1,0 +1,11 @@
+- Flickr API
+- Pillow LUT module
+
+===========================
+
+- links to preset packs in the store
+- add watermark (transparent png overlay)
+- disable ability to download processed file or lut file
+
+LOGIN PAGE:
+- "favorite" preset packs
