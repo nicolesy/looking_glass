@@ -1,0 +1,76 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    margin: 0 15%;
+}
+
+.main_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.main_photos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 50px 15%;
+    justify-content: center;
+}
+
+.paginate {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.radio {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#flickr_search {
+    /* max-width: auto; */
+    margin-right: 20px;
+}
+
+#flickr_photos {
+    min-height: 400px;
+}
+
+#btn_next, #btn_previous, #flickr_search_btn {
+    min-width: 200px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #000 !important;
+    box-shadow: 0 1px 0 0 #000 !important;
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+    color: #2979ff !important;
+}
+
+.page-footer {
+    padding: 15px 0;
+    text-align: center;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: black;
+}
