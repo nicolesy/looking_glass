@@ -23,8 +23,9 @@ div_page_nums.style.display = "none"
 let page_num = 1
 let sort_order = "interestingness-desc" // sets default sort order
 let num_per_page = results.value
-console.log(results.value)
+// console.log(results.value)
 
+// this is the function that loads the photos from the search/sort paramaters
 function loadFlickrPhotos() {
     let url = "https://www.flickr.com/services/rest/?method=flickr.photos.search"
     axios({
