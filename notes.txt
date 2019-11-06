@@ -5,7 +5,29 @@
 
 - links to preset packs in the store
 - add watermark (transparent png overlay)
+- crop the images for a split view
+--- make a toggle to view vertical/horizontal/etc.
 - disable ability to download processed file or lut file
+
+- pre-process the images and show preview thumbnails with their photos?
 
 LOGIN PAGE:
 - "favorite" preset packs
+
+===========================
+
+VISUALS:
+- nav bar at top with logo, log-in, and links to blog and store
+- image on top (split view or before/after view)
+- watermark
+- preset packs listed below or in side-nav
+-- click on one to view the preset applied to the photo
+
+
+===========================
+
+MODELS:
+- lut pack title
+- lut pack URL
+- lut preset name
+- lut thumbnail
