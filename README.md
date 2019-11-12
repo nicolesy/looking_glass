@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Part of my business is to create and sell preset packs through my [online store] (https://store.nicolesy.com) in the form of LUT, or .cube, files. Currently on a preset pack product page I show some before/after images of the presets using my images. My goal in this capstope project is to create a website where potential customers can preview their own photos with the presets in my online store.
+Part of my business is to create and sell preset packs through my online store (https://store.nicolesy.com) in the form of LUT, or .cube, files. Currently on a preset pack product page I show some before/after images of the presets using my images. My goal in this capstope project is to create a website where potential customers can preview their own photos with the presets in my online store.
 
 <img src="https://cdn.shopify.com/s/files/1/0232/9213/products/cheese_2000x.jpg?v=1556058438" title="Teal Orange 04 - Classic" width="200px"> <img src="https://cdn.shopify.com/s/files/1/0232/9213/products/ashlyn_7f676094-755c-4a89-ba68-d16a261ed26b_2000x.jpg?v=1556058434" title="Teal Orange 04 - Contrast" width="200px"> <img src="https://cdn.shopify.com/s/files/1/0232/9213/products/mushrooms_2000x.jpg?v=1556058445" title="Teal Orange 05 - Soft" width="200px">
 
@@ -26,7 +26,7 @@ Part of my business is to create and sell preset packs through my [online store]
 - Preset packs listed below or in side-nav
 
 ### Code:
-I'm using the [Pillow LUT] (https://github.com/homm/pillow-lut-tools) Python module to apply the LUT files. The code to apply the LUT file is very simple and is only a few lines of code. One challenge will be to only create temporary jpeg files so that I don't bog down the database with processed files.
+I'm using the Pillow LUT (https://github.com/homm/pillow-lut-tools) Python module to apply the LUT files. The code to apply the LUT file is very simple and is only a few lines of code. One challenge will be to only create temporary jpeg files so that I don't bog down the database with processed files.
 
 ```python
 from PIL import Image
