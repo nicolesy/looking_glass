@@ -42,6 +42,7 @@ img.filter(lut).save("temp.jpg")
 ### class = Preset
 - **LUT pack title:** Name of the preset pack (ForeignKey)
 - **LUT preset name:** Name of the individual preset (CharField)
+- **LUT preset file:** 
 - **LUT thumbnail:** Image file that represents the preset (ImageField)
 
 ### class = PresetPack
@@ -59,3 +60,5 @@ img.filter(lut).save("temp.jpg")
 2. Add user login feature to allow for accessing photos and favoriting preset packs
 3. Create a split-view of the before/after images (instead of two side-by-side)
 4. Create slider for the before/after photo to preview the image
+
+Final goal is to make the site functional and launch it so it is live and accessible to the public.
