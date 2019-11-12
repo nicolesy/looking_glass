@@ -14,10 +14,8 @@ Part of my business is to create and sell preset packs through my [online store]
 - Ability to upload a photo and preview it on the page
 - Drop-down with all preset packs, which will show a list of all LUT presets with that pack
 - The user can then click on a LUT preset and the preset will apply to their uploaded photo
-
 - Uploaded photo (with preset) will have a simple watermark over the image and right-click disabled
 - Users will have the ability to create an account and "favorite" presets they are interested in purchasing
-
 - Main page (without login) will show sample photos to choose from
 - If logged-in, the user can upload their own images
 
