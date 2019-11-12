@@ -41,12 +41,12 @@ img.filter(lut).save("temp.jpg")
 
 ### class = Preset
 - **LUT pack title:** Name of the preset pack (ForeignKey)
-- **LUT pack URL:** This will link to the preset pack in my online store (CharField)
 - **LUT preset name:** Name of the individual preset (CharField)
 - **LUT thumbnail:** Image file that represents the preset (ImageField)
 
 ### class = PresetPack
 - **LUT pack name:** Name of the preset pack
+- **LUT pack URL:** This will link to the preset pack in my online store (CharField)
 - **LUT pack thumbnail:** Image file that represents the preset pack (ImageField)
 
 ### class = UserUpload
