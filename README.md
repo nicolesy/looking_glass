@@ -42,7 +42,7 @@ img.filter(lut).save("temp.jpg")
 ### class = Preset
 - **LUT pack title:** Name of the preset pack (ForeignKey)
 - **LUT preset name:** Name of the individual preset (CharField)
-- **LUT preset file:** 
+- **LUT preset file:** .cube file for the preset
 - **LUT thumbnail:** Image file that represents the preset (ImageField)
 
 ### class = PresetPack
