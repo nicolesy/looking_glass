@@ -45,7 +45,7 @@ img.filter(lut).save("temp.jpg")
 - **LUT thumbnail:** Image file that represents the preset (ImageField)
 
 ### class = PresetPack
-- **LUT pack name:** Name of the preset pack
+- **LUT pack name:** Name of the preset pack (CharField)
 - **LUT pack URL:** This will link to the preset pack in my online store (CharField)
 - **LUT pack thumbnail:** Image file that represents the preset pack (ImageField)
 
