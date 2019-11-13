@@ -1,0 +1,1 @@
+default_app_config = 'lg_app.apps.RequestsConfig'

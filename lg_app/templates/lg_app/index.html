@@ -1,0 +1,28 @@
+{% extends 'lg_app/base.html' %}
+
+{% block content %}
+
+<div class="main">
+    <div class="photos">
+        <img src="https://via.placeholder.com/500">
+        <img src="https://via.placeholder.com/500">
+    </div>
+</div>
+
+<div class="preset_packs">
+    <div class="container">
+        <div class="input-field col s6 m6">
+            <select class="icons">
+                <option disabled selected>Select a Preset Pack:</option>
+                {% for preset_pack in preset_packs %}
+                <option value="{{ preset_pack.id }}" data-icon="https://via.placeholder.com/50" class="left">{{ preset_pack.pack_name }}</option>
+
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
