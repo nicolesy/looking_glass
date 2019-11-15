@@ -71,3 +71,47 @@ footer {
     align-items: flex-start;
     margin-top: 30px;
 }
+
+.preset_list {
+    min-height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.preset_thumbnail {
+    width: 200px;
+    margin: 5px;
+}
+
+.preset_name {
+    font-size: 12px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.user_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login .register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 600px;
+    margin-bottom: 50px;
+}
+
+a {
+    cursor: pointer;
+}

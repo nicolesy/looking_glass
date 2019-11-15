@@ -7,6 +7,9 @@
     <meta charset="utf-8">
     <title>Looking Glass</title>
 
+    <!-- axios CDN -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
     <!-- static css -->
     <link rel="stylesheet" type="text/css" href="{% static 'lg_app/style.css' %}">
 
@@ -19,18 +22,26 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
+    <!-- favicon -->
+    <link rel="icon" href="{% static 'lg_app/nicolesy.png' %}" />
+
+    <!-- Vue: development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </head>
 
 <body>
     <div class="top_nav">
         <div class="logo">
-            <img src="{% static 'lg_app/images/nicolesy_logo.png' %}" width="250px">
+            <a href="{% url 'lg_app:index' %}"><img src="{% static 'lg_app/images/nicolesy_logo.png' %}" width="250px"></a>
         </div>
         <div class="nav_links">
             <ul>
                 <li><a href="https://nicolesyblog.com">Blog</a></li>
                 <li><a href="https://store.nicolesy.com">Store</a></li>
                 <li><a href="https://nicolesy.zendesk.com/hc/en-us/requests/new">Contact</a></li>
+                <li>|</li>
+                <li><a href="{% url 'users:login_register' %}">Login</a></li>
             </ul>
         </div>
     </div>
@@ -48,7 +59,7 @@
                 <div class="grey-text text-darken-3 col l8 s12">
                     <h5>About Nicole</h5>
                     <p>Nicole S. Young is a professional photographer and published author whose love of photography and teaching has grown into an online photography business. Nicole is best known for her books on food photography, but is widely
-                        versed in a variety of photographic genres, including landscape, travel, lifestyle, and even underwater photography. Click here to read more.</p>
+                        versed in a variety of photographic genres, including landscape, travel, lifestyle, and even underwater photography.</p>
                 </div>
 
             </div>
@@ -60,6 +71,7 @@
         </div>
     </footer>
     <script type="text/javascript" src="{% static 'lg_app/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'lg_app/vue_app.js' %}"></script>
 </body>
 
 </html>

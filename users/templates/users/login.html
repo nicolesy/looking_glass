@@ -1,0 +1,34 @@
+{% extends 'lg_app/base.html' %}
+
+{% block content %}
+<div class="user_page" id="user_page">
+    <div class="login" id="login" style="display:none">
+        <h3>Login</h3>
+        <form action="{% url 'users:login_user' %}" method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="username" required />
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="password" required />
+            <button class="btn">Login</button>
+        </form>
+        <p>New user? <a id="register_toggle">Register here</a></p>
+    </div>
+
+    <div class="register" id="register" style="display:none">
+        <h3>Register</h3>
+        <form action="{% url 'users:register_user' %}" method="post">
+            {% csrf_token %}
+            <label for="reg_username">Username</label>
+            <input type="text" id="reg_username" name="username" placeholder="username" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required />
+            <label for="reg_password">Password</label>
+            <input type="password" id="reg_password" name="password" placeholder="password" required />
+            <button class="btn red">Register</button>
+        </form>
+        <p>Already have a login? <a id="login_toggle">Login here</a></p>
+    </div>
+
+</div>
+{% endblock %}

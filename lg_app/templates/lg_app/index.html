@@ -4,25 +4,49 @@
 
 <div class="main">
     <div class="photos">
-        <img src="https://via.placeholder.com/500">
-        <img src="https://via.placeholder.com/500">
+        <img src="{{ latest_image.url }}">
     </div>
+
+    <div class="upload_button input-field">
+        <form action="{% url 'lg_app:upload_photo' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="upload_photo" accept="image/*">
+            <input type="hidden" value={{ image.user_id }}>
+            <button class="btn">Upload</button>
+    </div>
+
 </div>
 
-<div class="preset_packs">
-    <div class="container">
-        <div class="input-field col s6 m6">
-            <select class="icons">
-                <option disabled selected>Select a Preset Pack:</option>
-                {% for preset_pack in preset_packs %}
-                <option value="{{ preset_pack.id }}" data-icon="https://via.placeholder.com/50" class="left">{{ preset_pack.pack_name }}</option>
+<div id="app">
+    <div class="preset_packs">
+        <div class="container">
+            <div class="input-field col s6 m6">
+                <select class="icons" v-model="preset_pack_id">
+                    <option disabled selected>Select a Preset Pack:</option>
+                    {% for preset_pack in preset_packs %}
+                    <option value="{{ preset_pack.id }}" data-icon="https://via.placeholder.com/50" class="left">{{ preset_pack.pack_name }}</option>
 
-                {% endfor %}
-            </select>
+                    {% endfor %}
+                </select>
+            </div>
         </div>
     </div>
 
+    <div class="preset_list" id="preset_list">
+        {% for preset in presets %}
+        <form class="preset_thumbnail" action="{% url 'lg_app:apply_lut' preset.id %}" method="post">
+            {% csrf_token %}
+            <ul>
+                <div class="preset_thumbnail">
+                    <input type="hidden" value="{{ preset.id }}" name="preset_thumbnail">
+                    <li><img src="uploads/{{preset.preset_thumbnail}}"><br /><button class="btn-flat preset_name">{{ preset.preset_name}}</button></li>
+                </div>
+            </ul>
+        </form>
+        {% endfor %}
 
+    </div>
 </div>
+
 
 {% endblock %}
