@@ -50,7 +50,10 @@ def index(request):
             }
     }
     
-    return render(request, "lg_app/index.html", context)
+    if request.user.is_authenticated:
+        return render(request, "lg_app/index.html", context)
+    else:
+        return HttpResponseRedirect(reverse('users:login_register'))
     
     
 # this is not finished and NEEDS WORK
