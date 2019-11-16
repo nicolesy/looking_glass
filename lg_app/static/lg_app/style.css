@@ -54,6 +54,7 @@ li a:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .photos img {
@@ -79,18 +80,13 @@ footer {
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-}
-
-.preset_thumbnail {
-    width: 200px;
-    margin: 5px;
+    margin-top: 40px;
 }
 
 .preset_name {
-    font-size: 12px;
+    font-size: 12px !important;
     text-align: center;
     display: block;
-    width: 100%;
 }
 
 .user_page {
@@ -109,9 +105,26 @@ footer {
 
 form {
     width: 600px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 a {
     cursor: pointer;
+}
+
+img.image_thumbnail {
+    object-fit: cover;
+    width: 20vh;
+    height: 20vh;
+    padding: 5px;
+}
+
+.before_after {
+    object-fit: contain;
+    width: 75vh;
+    height: 75vh;
+}
+
+.upload_btn {
+    width: 100%;
 }

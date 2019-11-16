@@ -10,18 +10,16 @@ let login_toggle = document.querySelector("#login_toggle")
 let register_toggle = document.querySelector("#register_toggle")
 
 
-// loads the login page with only the "login" option
-register.style.display = "none"
-login.style.display = ""
+// shows only the most recent thumbnails from the last image upload
+let image_after = document.querySelector("#image_after")
+let image_thumbnails = document.querySelectorAll(".image_thumbnail")
 
-// toggles the login form
-login_toggle.addEventListener("click", function() {
-    register.style.display = "none"
-    login.style.display = ""
-})
+for (let i = 0; i < image_thumbnails.length; ++i) {
+    image_thumbnails[i].addEventListener("click", function() {
+        image_after.src = this.src
+    })
+}
 
-//toggles the register form
-register_toggle.addEventListener("click", function() {
-    login.style.display = "none"
-    register.style.display = ""
-})
+
+//disables right-click
+document.addEventListener('contextmenu', event => event.preventDefault());

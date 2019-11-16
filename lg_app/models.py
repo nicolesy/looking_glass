@@ -7,6 +7,7 @@ class PresetPack(models.Model):
     pack_name = models.CharField(max_length=100)
     pack_url = models.CharField(max_length=200)
     pack_thumbnail = models.ImageField(upload_to='images/', null=True, blank=True)
+    pack_cover = models.ImageField(upload_to='images/', null=True, blank=True)
     
     def __str__(self):
         return self.pack_name
@@ -38,20 +39,31 @@ class Preset(models.Model):
         ]
 
 
-class UserUpload(models.Model):
+class UploadedImage(models.Model):
     user_img = models.ImageField(upload_to='images/')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_img')
     timestamp = models.DateTimeField(auto_now_add=True)
+    code = models.CharField(max_length=100)
     
     def __str__(self):
         return self.user.username + ' - ' + self.user_img.name
 
 
 
-class PresetApplied(models.Model):
-    user_upload = models.ForeignKey(UserUpload, on_delete=models.CASCADE, related_name = "user_upload")
+class ProcessedImage(models.Model):
+    user_upload = models.ForeignKey(UploadedImage, on_delete=models.CASCADE, related_name = "processed_images")
     image = models.ImageField(upload_to='images/')
-    preset = models.ForeignKey(Preset, on_delete=models.CASCADE, related_name = "preset")
+    preset = models.ForeignKey(Preset, on_delete=models.CASCADE, related_name = "processed_images")
+    code = models.CharField(max_length=100)
 
     def __str__(self):
         return str(self.preset)
+
+
+
+# uploaded_image = UploadedImage.objects.get(id=1)
+# uploaded_image.processed_images.all()
+# 
+# 
+# preset = Preset.objects.get(id=1)
+# preset.processed_images.all()

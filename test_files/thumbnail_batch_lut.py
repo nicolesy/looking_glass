@@ -3,9 +3,6 @@ from PIL import Image
 import pillow_lut
 import pathlib
 
-help(pillow_lut)
-
-exit()
 
 img = Image.open("smoothie-4671.jpg")
 
