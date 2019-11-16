@@ -33,12 +33,14 @@
 
 </head>
 
+{% comment %}
 <span>Hello, {{user.username}}</span>
 {% if user.is_authenticated %}
 <a href="{% url 'users:logout_user' %}">Logout</a>
 {% else %}
 <a href="{% url 'users:login_register' %}">Login</a>
 {% endif %}
+{% endcomment %}
 
 <body>
     <div class="top_nav">
@@ -61,7 +63,11 @@
                     <li><a href="https://nicolesy.zendesk.com/hc/en-us/requests/new">Contact</a></li>
                     <li>|</li>
                     <li><a class="dropdown-trigger dropdown_trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a href="{% url 'users:login_register' %}">Login</a></li>
+                    <li>{% if user.is_authenticated %}
+                        <a href="{% url 'users:logout_user' %}">Logout</a>
+                        {% else %}
+                        <a href="{% url 'users:login_register' %}">Login</a>
+                        {% endif %}</li>
                     <li>
                         <!-- Modal Trigger -->
                         <a class="waves-effect waves-light btn modal-trigger {% if user.is_authenticated %} {% else %} disabled {% endif %}" href="#modal1">{% if user.is_authenticated %}Upload a photo{% else %}Login to upload{% endif %}</a>
