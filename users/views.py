@@ -26,10 +26,10 @@ def login_user(request):
         login(request, user)
         return HttpResponseRedirect(reverse('lg_app:index'))
     else:
-        return HttpResponseRedirect(reverse('users:login'))
+        return HttpResponseRedirect(reverse('users:login_register'))
     
         
     
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect(reverse('lg_app:index'))
+    return HttpResponseRedirect(reverse('users:login_register'))
