@@ -2,7 +2,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     var elems_select = document.querySelectorAll('select');
     var instances_select = M.FormSelect.init(elems_select, {});
+    var elems_modal = document.querySelectorAll('.modal');
+    var instances_modal = M.Modal.init(elems_modal, {});
 });
+
+// let dropdown_trigger = document.querySelector(".dropdown_trigger")
+// 
+// $(document).ready(function() {
+//     $(dropdown_trigger).dropdown();
+// });
 
 let login = document.querySelector("#login")
 let register = document.querySelector("#register")
