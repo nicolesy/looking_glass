@@ -103,6 +103,11 @@ footer {
     align-items: center;
 }
 
+.user_page {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 form {
     margin-top: 20px;
 }
