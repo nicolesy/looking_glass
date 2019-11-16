@@ -4,23 +4,6 @@
 
 <div class="main">
 
-    <form action="{% url 'lg_app:upload_photo' %}" method="post" enctype="multipart/form-data">
-
-        {% csrf_token %}
-        <div class="file-field input-field upload_form">
-            <div class="upload_button btn col s6">
-                <span>Select a photo</span>
-                <input type="file" name="upload_photo" accept="image/*">
-                <input type="hidden" value={{ image.user_id }}>
-            </div>
-            <div class="file-path-wrapper col s6">
-                <input class="file-path validate" type="text">
-            </div>
-        </div>
-
-        <button class="btn upload_btn">Upload</button>
-    </form>
-
     <div class="photos">
         <div><img class="before_after before" src="uploads/{{ latest_image.user_img }}" title="{{ latest_image.user_img }}"></div>
         <div><img class="before_after after" id="image_after" src="uploads/{{ latest_image.user_img }}"></div>
