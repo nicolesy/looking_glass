@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="main">
-
+    {% if user.is_authenticated %}
     <div class="photos">
         <div><img class="before_after before" src="uploads/{{ latest_image.user_img }}" title="{{ latest_image.user_img }}"></div>
         <div><img class="before_after after" id="image_after" src="uploads/{{ latest_image.user_img }}"></div>
@@ -39,7 +39,8 @@
 
 
 </div>
-
-
+{% else %}
+<h4>Please <a href="{% url 'users:login_register' %}">Login</a></h4>
+{% endif %}
 
 {% endblock %}
