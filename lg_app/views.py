@@ -22,10 +22,6 @@ def index(request):
     latest_image = UploadedImage.objects.order_by('timestamp').last()
     processed_images = latest_image.processed_images.all()
     
-    
-    
-    # [{'id': 5, 'name': 'pack1', 'processed_images': [{'prest_name': 'preset1', 'image': 'uploaded_files/images/asodfas55.jpg'}]}, {'name': 'pack2'}]
-    
     data_packs = []
     for preset_pack in preset_packs:
         data_packs.append(preset_pack)
