@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances_select = M.FormSelect.init(elems_select, {});
     var elems_modal = document.querySelectorAll('.modal');
     var instances_modal = M.Modal.init(elems_modal, {});
+    var elems_tooltipped = document.querySelectorAll('.tooltipped');
+    var instances_tooltipped = M.Tooltip.init(elems_tooltipped, {});
+    var elems_collapsible = document.querySelectorAll('.collapsible');
+    var instances_collapsible = M.Collapsible.init(elems_collapsible, {});
 });
 
 // let dropdown_trigger = document.querySelector(".dropdown_trigger")
@@ -29,8 +33,7 @@ for (let i = 0; i < image_thumbnails.length; ++i) {
     image_thumbnails[i].addEventListener("click", function() {
         image_after.src = this.src
         description_after.innerHTML = ""
-        description_after.appendChild(preset_name[i])
-        // this makes the original span text disappear! it's driving me crazy
+        description_after.innerHTML = image_thumbnails[i].title
     })
 }
 
