@@ -21,10 +21,16 @@ let register_toggle = document.querySelector("#register_toggle")
 // shows only the most recent thumbnails from the last image upload
 let image_after = document.querySelector("#image_after")
 let image_thumbnails = document.querySelectorAll(".image_thumbnail")
+let description_after = document.querySelector("#description_after")
+let preset_name = document.querySelectorAll(".preset_name")
+
 
 for (let i = 0; i < image_thumbnails.length; ++i) {
     image_thumbnails[i].addEventListener("click", function() {
         image_after.src = this.src
+        description_after.innerHTML = ""
+        description_after.appendChild(preset_name[i])
+        // this makes the original span text disappear! it's driving me crazy
     })
 }
 
