@@ -82,7 +82,7 @@
                                     <div class="file-field input-field upload_form">
                                         <div class="upload_button btn col s6">
                                             <span>Select a photo</span>
-                                            <input type="file" name="upload_photo" accept="image/*">
+                                            <input type="file" name="upload_photo" accept="image/*" required>
                                             <input type="hidden" value={{ image.user_id }}>
                                         </div>
                                         <div class="file-path-wrapper col s6">
@@ -112,7 +112,7 @@
         <div class="container">
             <div class="row">
                 <div class="grey-text text-darken-3 col l3 s12">
-                    <h5><img src="https://via.placeholder.com/150"></h5>
+                    <h5><img class="nicolesy_photo" src="{% static 'lg_app/images/nicolesy_photo.png' %}"></h5>
 
                 </div>
                 <div class="grey-text text-darken-3 col l8 s12">
