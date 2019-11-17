@@ -1,0 +1,6 @@
+djangocleanup = removes all files when a new photo is uploaded
+
+added watermark with pillow
+
+biggest hurdle: getting the initial photos to process and SAVE in the proper location (within the database). This was my "day 1" struggle
+
