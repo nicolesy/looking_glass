@@ -19,6 +19,9 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/8befa8ec09.js" crossorigin="anonymous"></script>
+
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
@@ -33,14 +36,14 @@
 
 </head>
 
-{% comment %}
+<!-- {% comment %}
 <span>Hello, {{user.username}}</span>
 {% if user.is_authenticated %}
 <a href="{% url 'users:logout_user' %}">Logout</a>
 {% else %}
 <a href="{% url 'users:login_register' %}">Login</a>
 {% endif %}
-{% endcomment %}
+{% endcomment %} -->
 
 <body>
     <div class="top_nav">
@@ -60,7 +63,6 @@
                 <ul>
                     <li><a href="https://nicolesyblog.com" target="_blank">Blog</a></li>
                     <li><a href="https://store.nicolesy.com" target="_blank">Store</a></li>
-                    <li><a href="https://nicolesy.zendesk.com/hc/en-us/requests/new" target="_blank">Contact</a></li>
                     <li>|</li>
                     <li><a class="dropdown-trigger dropdown_trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li>{% if user.is_authenticated %}
@@ -80,17 +82,17 @@
 
                                     {% csrf_token %}
                                     <div class="file-field input-field upload_form">
-                                        <div class="upload_button btn col s6">
+                                        <div class="select_btn btn grey lighten-2 grey-text text-darken-4 col s6 ">
                                             <span>Select a photo</span>
                                             <input type="file" name="upload_photo" accept="image/*" required>
                                             <input type="hidden" value={{ image.user_id }}>
                                         </div>
-                                        <div class="file-path-wrapper col s6">
+                                        <div class="file-path-wrapper ">
                                             <input class="file-path validate" type="text">
                                         </div>
                                     </div>
 
-                                    <button class="btn upload_btn">Upload</button>
+                                    <button class="btn upload_btn deep-orange lighten-2">Upload</button>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -107,6 +109,11 @@
 
     {% block content %}
     {% endblock %}
+    <div class="main newsletter_signup">
+        <h4>Subscribe to the Newsletter</h4>
+        <div class="_form_65"></div>
+    </div>
+    <script src="https://nicolesy.activehosted.com/f/embed.php?id=65" type="text/javascript" charset="utf-8"></script>
 
     <footer class="page-footer grey lighten-2">
         <div class="container">
@@ -119,13 +126,17 @@
                     <h5>About Nicole</h5>
                     <p>Nicole S. Young is a professional photographer and published author whose love of photography and teaching has grown into an online photography business. Nicole is best known for her books on food photography, but is widely
                         versed in a variety of photographic genres, including landscape, travel, lifestyle, and even underwater photography.</p>
+                    <a class="tooltipped grey-text text-darken-3" data-position="top" data-tooltip="Nicolesy on Twitter" href="https://twitter.com/nicolesy" target="_blank"><i class=" fab fa-twitter"></i></a>
+                    <a class="tooltipped grey-text text-darken-3" data-position="top" data-tooltip="Nicolesy on Instagram" href="https://instagram.com/nicolesy" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
+
 
             </div>
         </div>
+
         <div class="footer-copyright grey-text text-darken-3">
             <div class="container">
-                © 2019 Nicolesy, Inc.
+                <span class="right">© 2019 Nicolesy, Inc.</span>
             </div>
         </div>
     </footer>
