@@ -15,6 +15,7 @@
 </div>
 
 
+
 <div class="preset_packs">
     <div class="container">
         <div class="input-field col s6 m6">
@@ -30,21 +31,20 @@
 </div>
 
 
-
 <div class="preset_list" id="preset_list">
     {% for image in processed_images %}
     <ul>
         <div class="preset_thumbnail">
-            <li><img class="image_thumbnail" src="uploads/{{image.image}}"><br /><span class="preset_name">{{ image.preset }}</span></li>
+            <li><img class="image_thumbnail tooltipped" data-position="top" data-tooltip="{{ image.preset }}" src="uploads/{{image.image}}" title="{{ image.preset }}"><br /><span style="display:none" class="preset_name">{{ image.preset }}</span></li>
         </div>
     </ul>
 
     {% endfor %}
-
-
 </div>
+
 {% else %}
 <h4>Please <a href="{% url 'users:login_register' %}">Login</a></h4>
 {% endif %}
+
 
 {% endblock %}
