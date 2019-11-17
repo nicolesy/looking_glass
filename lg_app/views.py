@@ -3,9 +3,8 @@ from looking_glass.settings import BASE_DIR
 from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .models import Preset, PresetPack, UploadedImage, ProcessedImage
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 import pillow_lut
-from PIL import Image
 from io import BytesIO
 from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -86,16 +85,25 @@ def upload_photo(request):
     
     presets = Preset.objects.all()
     
-    count = 0
+    
     for preset in presets:
+        basewidth = 800 #determines the image width
         lut = pillow_lut.load_cube_file(preset.preset_file.path)
         image = Image.open(new_photo.user_img.path)
         image = image.filter(lut)
-        count += 1
+        wpercent = (basewidth/float(image.size[0])) #resizes
+        hsize = int((float(image.size[1])*float(wpercent))) #resizes
+        image = image.resize((basewidth,hsize), Image.ANTIALIAS) #resizes
+        
+        watermark(image, text=(preset.preset_name + " | nicolesy.com"), pos=(30, 30))
+        print("=" *100)
+        print(preset.preset_name)
+        print("=" *100)
+        
         
         image = image.convert('RGB')
         output = BytesIO()
-        image.save(output, format='JPEG', quality=85)
+        image.save(output, format='JPEG', quality=100)
         output.seek(0)
         image = InMemoryUploadedFile(output, 'ImageField',
                                     'image.jpg',
@@ -114,10 +122,9 @@ def upload_photo(request):
     return HttpResponseRedirect(reverse('lg_app:index'))
 
 
-# def delete_model_instance(request):
-#     upload_image_instance = UploadedImage.objects.get(code=)
-#     processed_image_instance = ProcessedImage.objects.get(code=)
-#     upload_image_instance.delete()
-#     processed_image_instance.delete()
-# 
-#     return HttpResponseRedirect(reverse('lg_app:index'))
+def watermark(photo, text, pos):
+    drawing = ImageDraw.Draw(photo)
+    white = (255, 255, 255)
+    font = ImageFont.truetype("HelveticaNeue.ttc", 24)
+    drawing.text(pos, text, fill=white, font=font)
+    return photo
