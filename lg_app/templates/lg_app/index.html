@@ -5,8 +5,12 @@
 <div class="main">
     {% if user.is_authenticated %}
     <div class="photos">
-        <div><img class="before_after before" src="uploads/{{ latest_image.user_img }}" title="{{ latest_image.user_img }}"></div>
-        <div><img class="before_after after" id="image_after" src="uploads/{{ latest_image.user_img }}"></div>
+        <div><img class="before_after before" src="uploads/{{ latest_image.user_img }}" title="{{ latest_image.user_img }}">
+            <div class="description">Before</div>
+        </div>
+        <div><img class="before_after after" id="image_after" src="uploads/{{ latest_image.user_img }}">
+            <div id="description_after" class="description">After</div>
+        </div>
     </div>
 </div>
 
