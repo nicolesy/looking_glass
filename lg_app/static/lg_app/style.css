@@ -59,6 +59,7 @@ li a:hover {
 
 .photos img {
     margin: 10px;
+    max-width: 100%;
 }
 
 footer {
@@ -84,9 +85,15 @@ footer {
 }
 
 .preset_name {
-    font-size: 12px !important;
+    font-size: inherit;
     text-align: center;
     display: block;
+}
+
+.preset_thumbnail {
+    font-size: 12px;
+    cursor: pointer;
+    margin: 5px;
 }
 
 .user_page {
@@ -109,7 +116,7 @@ footer {
 }
 
 form {
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 a {
@@ -133,6 +140,11 @@ img.image_thumbnail {
     width: 100%;
 }
 
+.btn {
+    box-shadow: none !important;
+    background-color: #5bb8bf !important;
+}
+
 nav {
     margin-top: 20px;
     box-shadow: none !important;
@@ -148,4 +160,14 @@ nav {
 
 h4 {
     color: black !important;
+}
+
+.nicolesy_photo {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.description {
+    text-align: center;
+    font-size: 16px !important;
 }
