@@ -62,10 +62,6 @@ li a:hover {
     max-width: 100%;
 }
 
-footer {
-    margin-top: 100px;
-}
-
 .preset_packs {
     display: flex;
     flex-direction: row;
@@ -145,6 +141,16 @@ img.image_thumbnail {
     background-color: #5bb8bf !important;
 }
 
+.btn:hover {
+    color: white !important;
+    background-color: #424242 !important;
+}
+
+.select_btn:hover {
+    color: white !important;
+    background-color: #424242 !important;
+}
+
 nav {
     margin-top: 20px;
     box-shadow: none !important;
@@ -170,4 +176,9 @@ h4 {
 .description {
     text-align: center;
     font-size: 16px !important;
+}
+
+.newsletter_signup {
+    margin-top: 50px;
+    padding-bottom: 50px;
 }
