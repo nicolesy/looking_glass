@@ -21,17 +21,6 @@ def index(request):
     latest_image = UploadedImage.objects.order_by('timestamp').last()
     processed_images = latest_image.processed_images.all()
     
-    data_packs = []
-    for preset_pack in preset_packs:
-        data_packs.append(preset_pack)
-    
-    data_processed_images = []
-    for image in processed_images:
-        data_processed_images.append(image)
-    
-    print('='*100)
-    print(data_processed_images)
-    print('='*100)
     
     context = {
         "preset_packs": preset_packs,
@@ -39,17 +28,31 @@ def index(request):
         "images": images,
         "latest_image": latest_image,
         "processed_images": processed_images,
-        "mydata": {
-            "pack_name": data_packs,
-            "image_name": data_processed_images,
-            }
     }
     
     if request.user.is_authenticated:
         return render(request, "lg_app/index.html", context)
     else:
         return HttpResponseRedirect(reverse('users:login_register'))
+
+
+def profile_page(request):
+    preset_packs = PresetPack.objects.all().order_by("pack_name")
     
+    context2 = {
+        "preset_packs": preset_packs,
+    }
+    
+    if request.user.is_authenticated:
+        return render(request, "lg_app/profile.html", context2)
+    else:
+        return HttpResponseRedirect(reverse('users:login_register'))
+
+
+def about_page(request):
+    return render(request, "lg_app/about.html", {})
+
+
     
 # this is not finished and NEEDS WORK
 def get_presets(request):
