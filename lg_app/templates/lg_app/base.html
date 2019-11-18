@@ -50,55 +50,54 @@
         <div class="logo">
             <a href="{% url 'lg_app:index' %}"><img src="{% static 'lg_app/images/nicolesy_logo.png' %}" width="250px"></a>
         </div>
+
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">Profile</a></li>
+            <li><a href="{% url 'lg_app:profile_page' %}">Profile</a></li>
             <li class="divider"></li>
-            <li><a href="{% url 'users:login_register' %}">Login</a></li>
-            <li><a href="#!">two</a></li>
-            <li><a href="#!">three</a></li>
+            <li><a href="{% url 'users:logout_user' %}">Logout</a></li>
         </ul>
         <nav class="grey lighten-1">
             <!-- <div class="nav_links"> -->
             <div class="nav-wrapper nav_center">
                 <ul>
-                    <li><a href="https://nicolesyblog.com" target="_blank">Blog</a></li>
-                    <li><a href="https://store.nicolesy.com" target="_blank">Store</a></li>
+                    <li><a href="{% url 'lg_app:index' %}">Home</a></li>
                     <li>|</li>
+                    <li><a href="{% url 'lg_app:about_page' %}">About</a></li>
+                    <li>|</li>
+                    {% if user.is_authenticated %}
                     <li><a class="dropdown-trigger dropdown_trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
-                    <li>{% if user.is_authenticated %}
-                        <a href="{% url 'users:logout_user' %}">Logout</a>
-                        {% else %}
-                        <a href="{% url 'users:login_register' %}">Login</a>
-                        {% endif %}</li>
-                    <li>
-                        <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn modal-trigger {% if user.is_authenticated %} {% else %} disabled {% endif %}" href="#modal1">{% if user.is_authenticated %}Upload a photo{% else %}Login to upload{% endif %}</a>
+                    {% else %}
+                    <li><a href="{% url 'users:login_register' %}">Login</a></li>
+                    {% endif %}
 
-                        <!-- Modal Structure -->
-                        <div id="modal1" class="modal">
-                            <div class="modal-content">
-                                <h4>Photo upload</h4>
-                                <form action="{% url 'lg_app:upload_photo' %}" method="post" enctype="multipart/form-data">
+                    <!-- Modal Trigger -->
+                    <a class="waves-effect waves-light btn modal-trigger {% if user.is_authenticated %} {% else %} disabled {% endif %}" href="#modal1">{% if user.is_authenticated %}Upload a photo{% else %}Login to upload{% endif %}</a>
 
-                                    {% csrf_token %}
-                                    <div class="file-field input-field upload_form">
-                                        <div class="select_btn btn grey lighten-2 grey-text text-darken-4 col s6 ">
-                                            <span>Select a photo</span>
-                                            <input type="file" name="upload_photo" accept="image/*" required>
-                                            <input type="hidden" value={{ image.user_id }}>
-                                        </div>
-                                        <div class="file-path-wrapper ">
-                                            <input class="file-path validate" type="text">
-                                        </div>
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                        <div class="modal-content">
+                            <h4>Photo upload</h4>
+                            <form action="{% url 'lg_app:upload_photo' %}" method="post" enctype="multipart/form-data">
+
+                                {% csrf_token %}
+                                <div class="file-field input-field upload_form">
+                                    <div class="select_btn btn grey lighten-2 grey-text text-darken-4 col s6 ">
+                                        <span>Select a photo</span>
+                                        <input type="file" name="upload_photo" accept="image/*" required>
+                                        <input type="hidden" value={{ image.user_id }}>
                                     </div>
+                                    <div class="file-path-wrapper ">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
 
-                                    <button class="btn upload_btn deep-orange lighten-2">Upload</button>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                            </div>
+                                <button class="btn upload_btn deep-orange lighten-2">Upload</button>
+                            </form>
                         </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                        </div>
+                    </div>
                     </li>
                 </ul>
             </div>
@@ -126,8 +125,10 @@
                     <h5>About Nicole</h5>
                     <p>Nicole S. Young is a professional photographer and published author whose love of photography and teaching has grown into an online photography business. Nicole is best known for her books on food photography, but is widely
                         versed in a variety of photographic genres, including landscape, travel, lifestyle, and even underwater photography.</p>
-                    <a class="tooltipped grey-text text-darken-3" data-position="top" data-tooltip="Nicolesy on Twitter" href="https://twitter.com/nicolesy" target="_blank"><i class=" fab fa-twitter"></i></a>
-                    <a class="tooltipped grey-text text-darken-3" data-position="top" data-tooltip="Nicolesy on Instagram" href="https://instagram.com/nicolesy" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="fontawesome_footer tooltipped grey-text text-darken-3" data-position="top" data-tooltip="Nicolesy on Twitter" href="https://twitter.com/nicolesy" target="_blank"><i class=" fab fa-twitter"></i></a>
+                    <a class="fontawesome_footer tooltipped grey-text text-darken-3" data-position="top" data-tooltip="Nicolesy on Instagram" href="https://instagram.com/nicolesy" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="fontawesome_footer tooltipped grey-text text-darken-3" data-position="top" data-tooltip="Nicolesy Blog" href="https://nicolesyblog.com" target="_blank"><i class="fab fa-wordpress"></i></a>
+                    <a class="fontawesome_footer tooltipped grey-text text-darken-3" data-position="top" data-tooltip="Nicolesy Store" href="https://store.nicolesy.com" target="_blank"><i class="far fa-shopping-cart"></i></a>
                 </div>
 
 
@@ -142,6 +143,14 @@
     </footer>
     <script type="text/javascript" src="{% static 'lg_app/script.js' %}"></script>
     <script type="text/javascript" src="{% static 'lg_app/vue_app.js' %}"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems_dropdown = document.querySelectorAll('.dropdown-trigger');
+            var instances_dropdown = M.Dropdown.init(elems_dropdown, {
+                coverTrigger: false
+            });
+        });
+    </script>
 </body>
 
 </html>
