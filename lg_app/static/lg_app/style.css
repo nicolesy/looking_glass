@@ -239,3 +239,39 @@ h4 {
 .about_page {
     max-width: 800px;
 }
+
+.pack_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pack_info img {
+    max-width: 200px;
+}
+
+.learn_more {
+    background-color: #fafafa;
+    width: 100%;
+    text-align: center;
+    margin: 30px 0;
+    padding: 30px 0;
+}
+
+.pack_info_cover {
+    display: flex;
+    flex-direction: row;
+}
+
+.pack_info_details {
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    justify-content: space-between;
+}
+
+.pack_info_details h5 {
+    margin: 0 !important;
+}
