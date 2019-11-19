@@ -21,7 +21,7 @@ class PresetPack(models.Model):
 
 
 class Preset(models.Model):
-    preset_pack = models.ForeignKey(PresetPack, on_delete=models.CASCADE, related_name='preset_pack')
+    preset_pack = models.ForeignKey(PresetPack, on_delete=models.CASCADE, related_name='presets') #preset_pack
     preset_name = models.CharField(max_length=200)
     preset_file = models.FileField(upload_to='luts/', null=True, blank=True)
     preset_thumbnail = models.ImageField(upload_to='images/preset_thumbnails', null=True, blank=True)
@@ -43,7 +43,7 @@ class Preset(models.Model):
 
 class UploadedImage(models.Model):
     user_img = models.ImageField(upload_to='images/before/')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_img')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='uploaded_images') #user_img
     timestamp = models.DateTimeField(auto_now_add=True)
     code = models.CharField(max_length=100)
     
