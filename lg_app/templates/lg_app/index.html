@@ -59,14 +59,16 @@
                 <div>
                     <h5>{{ data_pack.name }}</h5>
                     <p>{{ data_pack.description }}</p>
+                    <p>Price: {{ data_pack.price }}
                 </div>
-
-                <a href="{{ data_pack.url }}" class="btn btn-learn-more" target="_blank">Learn more&nbsp;&nbsp;&nbsp;</a>
-                <form id="info_form" action="{% url 'lg_app:add_fave' data_pack.id %}" method="post">
-                    {% csrf_token %}
-                    <input value="{{ data_pack.id }}" type="hidden" name="add_pack_fave">
-                    <button class="btn btn-wishlist" target="_blank">Add to wishlist&nbsp;&nbsp;&nbsp;</button>
-                </form>
+                <div>
+                    <a href="{{ data_pack.url }}" class="btn btn-learn-more" target="_blank">Learn more&nbsp;&nbsp;&nbsp;</a>
+                    <form id="info_form" action="{% url 'lg_app:add_fave' data_pack.id %}" method="post">
+                        {% csrf_token %}
+                        <input value="{{ data_pack.id }}" type="hidden" name="add_pack_fave">
+                        <button class="btn btn-wishlist" target="_blank">Add to wishlist&nbsp;&nbsp;&nbsp;</button>
+                    </form>
+                </div>
 
             </div>
         </div>
