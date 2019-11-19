@@ -9,7 +9,7 @@ class PresetPack(models.Model):
     pack_url = models.CharField(max_length=200)
     pack_thumbnail = models.ImageField(upload_to='images/cover_thumbnails', null=True, blank=True)
     pack_cover = models.ImageField(upload_to='images/cover_images', null=True, blank=True)
-    pack_fave = models.BooleanField(default=False)
+    pack_fave = models.ManyToManyField(User, related_name='favorite_packs', null=True, blank=True)
     
     def __str__(self):
         return self.pack_name
