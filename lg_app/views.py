@@ -51,6 +51,7 @@ def index(request):
             "cover": preset_pack.pack_cover,
             "fave": preset_pack.pack_fave.all(),
             "presets": presets,
+            "price": preset_pack.pack_price,
         })
         # print("=" *100)
         # print(preset_pack.pack_fave.all())
