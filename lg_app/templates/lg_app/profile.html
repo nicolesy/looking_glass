@@ -7,26 +7,27 @@
 
 <div class="main">
 
-
     <div class="favorite_list">
 
-        <div>
-            {% for preset_pack in preset_packs %}
 
-            <div class="favorite_packs">
-                {% if  preset_pack.pack_fave %}
-                <div><a href="{{ preset_pack.pack_url }}" target="_blank"><img class="preset_cover" src="{{preset_pack.pack_cover.url}}" title="{{preset_pack.pack_name}}"></a>
-                </div>
-                <div class="pack_name"><span>{{preset_pack.pack_name}}</span></div>
-                <div class="pack_description">{{preset_pack.pack_description}}</div>
-                <a class="btn" href="{{ preset_pack.pack_url }}" target="_blank">Learn More</a>
+        {% for preset_pack in preset_packs %}
+
+        <div class="favorite_packs">
+            {% if  preset_pack.pack_fave %}
+            <div><a href="{{ preset_pack.pack_url }}" target="_blank"><img class="preset_cover pack_info_thumbnail" src="{{preset_pack.pack_cover.url}}" title="{{preset_pack.pack_name}}"></a>
             </div>
-            {% endif %}
+            <div class="pack_name"><span>{{preset_pack.pack_name}}</span></div>
+            <div class="pack_description">{{preset_pack.pack_description}}</div>
+            <a class="btn" href="{{ preset_pack.pack_url }}" target="_blank">Learn More</a>
         </div>
-
+        {% endif %}
         {% endfor %}
+
+
     </div>
 </div>
+
+
 
 
 {% endblock %}
