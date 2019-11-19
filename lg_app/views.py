@@ -37,10 +37,12 @@ def index(request):
     for preset_pack in preset_packs:
         presets = []
         for preset in preset_pack.presets.all():
-            presets.append({
-                "name": preset.preset_name,
-                "processed_image": ProcessedImage.objects.get(preset_id=preset.id, user_upload_id=latest_image.id).image.url
-            })
+            processed_image = ProcessedImage.objects.filter(preset_id=preset.id, user_upload_id=latest_image.id).first()
+            if processed_image is not None:
+                presets.append({
+                    "name": preset.preset_name,
+                    "processed_image": ProcessedImage.objects.get(preset_id=preset.id, user_upload_id=latest_image.id).image.url
+                })
         data_packs.append({
             "name": preset_pack.pack_name,
             "url": preset_pack.pack_url,
@@ -115,7 +117,6 @@ def upload_photo(request):
     new_photo.save()
     presets = Preset.objects.all()
     
-    
     for preset in presets:
         basewidth = 800 #determines the image width ###
         lut = pillow_lut.load_cube_file(preset.preset_file.path)
@@ -126,10 +127,6 @@ def upload_photo(request):
         image = image.resize((basewidth,hsize), Image.ANTIALIAS) #resizes
         
         watermark(image, text=(preset.preset_name + " | nicolesy.com"), pos=(30, 30))
-        print("=" *100)
-        print(preset.preset_name)
-        print("=" *100)
-        
         
         image = image.convert('RGB')
         output = BytesIO()
