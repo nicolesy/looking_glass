@@ -54,13 +54,20 @@
             <h4>Learn more about these presets:</h4>
         </div>
         <div class="pack_info_cover">
-            <div><img src="uploads/{{data_pack.cover}}"></div>
+            <div class="pack_info_thumbnail"><a href="{{ data_pack.url }}"><img class="tooltipped" src="uploads/{{data_pack.cover}}" data-position="top" data-tooltip="View the {{ data_pack.name }} pack in the Nicolesy Store"></a></div>
             <div class="pack_info_details">
                 <div>
                     <h5>{{ data_pack.name }}</h5>
                     <p>{{ data_pack.description }}</p>
                 </div>
-                <a href="{{ data_pack.url }}" class="btn" target="_blank">Learn more</a>
+
+                <a href="{{ data_pack.url }}" class="btn btn-learn-more" target="_blank">Learn more&nbsp;&nbsp;&nbsp;</a>
+                <form id="info_form" action="{% url 'lg_app:add_fave' data_pack.id %}" method="post">
+                    {% csrf_token %}
+                    <input value="{{ data_pack.id }}" type="hidden" name="add_pack_fave">
+                    <button class="btn btn-wishlist" target="_blank">Add to wishlist&nbsp;&nbsp;&nbsp;</button>
+                </form>
+
             </div>
         </div>
     </div>
