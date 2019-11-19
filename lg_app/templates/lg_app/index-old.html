@@ -1,0 +1,54 @@
+{% extends 'lg_app/base.html' %}
+
+{% block content %}
+
+<div class="sub_nav">
+    <h6>Welcome, {{ user.username }}!</h6>
+</div>
+
+<div class="main">
+    {% if user.is_authenticated %}
+    <div class="photos">
+        <div><img class="before_after before" src="uploads/{{ latest_image.user_img }}" title="{{ latest_image.user_img }}">
+            <div class="description">Before</div>
+        </div>
+        <div><img class="before_after after" id="image_after" src="uploads/{{ latest_image.user_img }}">
+            <div id="description_after" class="description">After</div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="preset_packs">
+    <div class="container">
+        <div class="input-field col s6 m6">
+            <select id="preset_packs" class="icons">
+                <option disabled selected>Select a Preset Pack:</option>
+                {% for preset_pack in preset_packs %}
+                <option value="{{ preset_pack.id }}" data-icon="{{ preset_pack.pack_thumbnail.url }}" class="left">{{ preset_pack.pack_name }}</option>
+
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+
+
+<div class="preset_list" id="preset_list">
+    {% for image in processed_images %}
+    <ul>
+        <div class="preset_thumbnail">
+            <li><img class="image_thumbnail tooltipped" data-position="top" data-tooltip="{{ image.preset }}" src="uploads/{{image.image}}" title="{{ image.preset }}"><br /><span style="display:none" class="preset_name">{{ image.preset }}</span></li>
+        </div>
+    </ul>
+
+    {% endfor %}
+</div>
+
+{% else %}
+<h4>Please <a href="{% url 'users:login_register' %}">Login</a></h4>
+{% endif %}
+
+
+{% endblock %}
