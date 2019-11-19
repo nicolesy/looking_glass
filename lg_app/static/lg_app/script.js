@@ -22,7 +22,6 @@ let image_thumbnails = document.querySelectorAll(".image_thumbnail")
 let description_after = document.querySelector("#description_after")
 let preset_name = document.querySelectorAll(".preset_name")
 
-
 for (let i = 0; i < image_thumbnails.length; ++i) {
     image_thumbnails[i].addEventListener("click", function() {
         image_after.src = this.src
@@ -30,6 +29,35 @@ for (let i = 0; i < image_thumbnails.length; ++i) {
         description_after.innerHTML = image_thumbnails[i].title
     })
 }
+
+
+// changes the thumbnails visible when the drop - down changes
+let preset_packs = document.querySelector("#preset_packs")
+
+
+
+preset_packs.addEventListener("change", function() {
+    let divs = document.querySelectorAll(".preset_list")
+    for (let i = 0; i < divs.length; ++i) {
+        console.log(divs[i])
+        console.log("pack value")
+        console.log(preset_packs.value)
+        console.log("pack name")
+        let current_pack = document.querySelector('#' + preset_packs.name)
+        console.log(current_pack)
+    }
+
+
+
+
+
+    // 
+    // if (preset_packs.value == {{ preset.id }}) {
+    // 
+    // }
+})
+
+
 
 
 //disables right-click
