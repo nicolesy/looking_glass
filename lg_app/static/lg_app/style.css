@@ -240,6 +240,7 @@ h4 {
     max-width: 800px;
 }
 
+/* learn more section with preset pack image and description */
 .pack_info {
     display: flex;
     flex-direction: column;
@@ -248,7 +249,7 @@ h4 {
 }
 
 .pack_info img {
-    max-width: 200px;
+    max-width: 800px;
 }
 
 .learn_more {
@@ -262,6 +263,8 @@ h4 {
 .pack_info_cover {
     display: flex;
     flex-direction: row;
+    min-height: 600px;
+    min-width: 25%;
 }
 
 .pack_info_details {
@@ -273,5 +276,31 @@ h4 {
 }
 
 .pack_info_details h5 {
+    margin: 0 !important;
+}
+
+.btn-wishlist {
+    width: 100%;
+    margin-top: 5px !important;
+}
+
+.btn-wishlist:hover:after {
+    transition: 500ms;
+    content: "\f004";
+    font-family: "FontAwesome";
+}
+
+.btn-learn-more:hover:after {
+    transition: 500ms;
+    content: "\f061";
+    font-family: "FontAwesome";
+}
+
+.pack_info_thumbnail:hover {
+    transition: 500ms;
+    opacity: 80%;
+}
+
+#info_form {
     margin: 0 !important;
 }
