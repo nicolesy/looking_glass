@@ -39,22 +39,14 @@ let preset_packs = document.querySelector("#preset_packs")
 preset_packs.addEventListener("change", function() {
     let divs = document.querySelectorAll(".preset_list")
     for (let i = 0; i < divs.length; ++i) {
-        console.log(divs[i])
-        console.log("pack value")
-        console.log(preset_packs.value)
-        console.log("pack name")
-        let current_pack = document.querySelector('#' + preset_packs.name)
-        console.log(current_pack)
+
+        if (preset_packs.value == divs[i].id) {
+            divs[i].style.display = ""
+        } else {
+            divs[i].style.display = "none"
+        }
+
     }
-
-
-
-
-
-    // 
-    // if (preset_packs.value == {{ preset.id }}) {
-    // 
-    // }
 })
 
 
