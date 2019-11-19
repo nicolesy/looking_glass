@@ -44,13 +44,17 @@ def index(request):
                     "processed_image": ProcessedImage.objects.get(preset_id=preset.id, user_upload_id=latest_image.id).image.url
                 })
         data_packs.append({
+            "id": preset_pack.id,
             "name": preset_pack.pack_name,
             "url": preset_pack.pack_url,
             "description": preset_pack.pack_description,
             "cover": preset_pack.pack_cover,
-            "fave": preset_pack.pack_fave,
+            "fave": preset_pack.pack_fave.all(),
             "presets": presets,
         })
+        # print("=" *100)
+        # print(preset_pack.pack_fave.all())
+        # print("=" *100)
     
 
     new_context = {
@@ -69,7 +73,7 @@ def index(request):
 
 
 def profile_page(request):
-    preset_packs = PresetPack.objects.all().order_by("pack_name")
+    preset_packs = request.user.favorite_packs.all()
     
     context2 = {
         "preset_packs": preset_packs,
@@ -170,3 +174,13 @@ def select_presets(request):
     
     
     return render(request, "lg_app/index.html", context)
+    
+
+def add_fave(request, pack_id):
+    faves = request.POST['add_pack_fave']
+    pack = PresetPack.objects.get(id=pack_id) 
+    pack.pack_fave.add(request.user)
+    
+    
+    return HttpResponseRedirect(reverse('lg_app:profile_page'))
+    
