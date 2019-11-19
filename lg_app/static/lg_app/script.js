@@ -36,14 +36,18 @@ let preset_packs = document.querySelector("#preset_packs")
 
 
 
+
 preset_packs.addEventListener("change", function() {
     let divs = document.querySelectorAll(".preset_list")
+    let pack_info = document.querySelectorAll(".pack_info")
     for (let i = 0; i < divs.length; ++i) {
 
         if (preset_packs.value == divs[i].id) {
             divs[i].style.display = ""
+            pack_info[i].style.display = ""
         } else {
             divs[i].style.display = "none"
+            pack_info[i].style.display = "none"
         }
 
     }
