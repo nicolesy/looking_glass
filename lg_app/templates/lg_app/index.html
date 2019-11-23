@@ -78,5 +78,8 @@
 
 {% else %} <h4>Please <a href=" {% url 'users:login_register' %}">Login</a></h4>
 {% endif %}
-
+<script type="text/javascript">
+    let pp = [{% for preset_pack in preset_packs %}"{{preset_pack.pack_name}}",{% endfor %}]
+    console.log(pp)
+</script>
 {% endblock %}
