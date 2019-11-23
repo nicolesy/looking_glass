@@ -60,6 +60,8 @@ li a:hover {
 .photos img {
     margin: 10px;
     max-width: 100%;
+    height: auto;
+    max-height: 100vh;
 }
 
 .preset_packs {
@@ -112,7 +114,7 @@ li a:hover {
 }
 
 form {
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 a {
@@ -309,4 +311,67 @@ h4 {
 
 #info_form {
     margin: 0 !important;
+}
+
+.modal-content {
+    margin-bottom: 0 !important;
+}
+
+/* loading button spinner */
+.loader {
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    border-top: 16px solid #FF8A65;
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#loader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+}
+
+#cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+}
+
+#top_bar {
+    position: relative;
+    padding: 5px 0;
+    background-color: #FF8A65;
+    width: 100%;
+    z-index: 100;
+    color: white;
+    text-align: center;
+}
+
+.strong {
+    font-weight: bold !important;
+}
+
+#upload_alert {
+    color: black;
+    margin: 0px !important;
 }
