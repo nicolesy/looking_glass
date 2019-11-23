@@ -12,6 +12,8 @@ import sys
 from django.contrib.auth.decorators import login_required
 from string import ascii_letters, digits
 from random import choice
+import datetime
+
 
 
 def index(request):
@@ -19,7 +21,11 @@ def index(request):
     preset_packs = PresetPack.objects.all().order_by("pack_name")
     images = UploadedImage.objects.all()
     
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('users:login_register'))
+    
     latest_image = request.user.uploaded_images.order_by('timestamp').last()
+    
     if latest_image == None:
         return render(request, "lg_app/index.html", {})
     else:
@@ -111,6 +117,7 @@ def get_presets(request):
 def upload_photo(request):
     request.user.uploaded_images.all().delete() # UploadedImages for the users
     upload_photo = request.FILES["upload_photo"]
+    
     user = request.user
     code = ''.join([choice(ascii_letters + digits) for i in range(50)])
     new_photo = UploadedImage(
@@ -120,16 +127,29 @@ def upload_photo(request):
     )
     
     new_photo.save()
+    
+    #######
+    basewidth = 800 #determines the image width ###
+    image = Image.open(new_photo.user_img.path)
+    wpercent = (basewidth/float(image.size[0])) #resizes
+    hsize = int((float(image.size[1])*float(wpercent))) #resizes
+    image = image.resize((basewidth,hsize), Image.ANTIALIAS) #resizes
+    image.save(new_photo.user_img.path)
+    #####
+    
     presets = Preset.objects.all()
     
     for preset in presets:
-        basewidth = 800 #determines the image width ###
+        print("=" *50)
+        print(datetime.datetime.now())
+        print("=" *100)
+        # basewidth = 800 #determines the image width ###
         lut = pillow_lut.load_cube_file(preset.preset_file.path)
         image = Image.open(new_photo.user_img.path)
         image = image.filter(lut)
-        wpercent = (basewidth/float(image.size[0])) #resizes
-        hsize = int((float(image.size[1])*float(wpercent))) #resizes
-        image = image.resize((basewidth,hsize), Image.ANTIALIAS) #resizes
+        # wpercent = (basewidth/float(image.size[0])) #resizes
+        # hsize = int((float(image.size[1])*float(wpercent))) #resizes
+        # image = image.resize((basewidth,hsize), Image.ANTIALIAS) #resizes
         
         watermark(image, text=(preset.preset_name + " | nicolesy.com"), pos=(30, 30))
         
