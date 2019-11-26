@@ -134,7 +134,7 @@ def upload_photo(request):
     wpercent = (basewidth/float(image.size[0])) #resizes
     hsize = int((float(image.size[1])*float(wpercent))) #resizes
     image = image.resize((basewidth,hsize), Image.ANTIALIAS) #resizes
-    image.save(new_photo.user_img.path)
+    image.save(new_photo.user_img.path, format='JPEG', quality=50)
     #####
     
     presets = Preset.objects.all()
