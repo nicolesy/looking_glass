@@ -35,7 +35,7 @@
 </div>
 
 <!-- thumbnails section -->
-<div>
+<div class="pack_thumbnails_section">
     {% for data_pack in data_packs %}
     <div class="preset_list" id="{{ data_pack.name }}">
         {% for preset in data_pack.presets %}
@@ -47,6 +47,7 @@
             </div>
 
         </ul>
+
 
         {% endfor %}
     </div>
