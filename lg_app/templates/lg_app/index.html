@@ -34,6 +34,7 @@
     </div>
 </div>
 
+<!-- thumbnails section -->
 <div>
     {% for data_pack in data_packs %}
     <div class="preset_list" id="{{ data_pack.name }}">
@@ -49,6 +50,8 @@
 
         {% endfor %}
     </div>
+
+    <!-- this appears when a specific preset pack is selected from the drop-down list -->
     <div class="pack_info" id="pack_info_{{ data_pack.name }}" style="display:none">
         <div class="learn_more">
             <h4>Learn more about these presets:</h4>
@@ -59,14 +62,14 @@
                 <div>
                     <h5>{{ data_pack.name }}</h5>
                     <p>{{ data_pack.description }}</p>
-                    <p>Price: {{ data_pack.price }}
+                    <p class="price">Price: {{ data_pack.price }}
                 </div>
                 <div>
-                    <a href="{{ data_pack.url }}" class="btn btn-learn-more" target="_blank">Learn more&nbsp;&nbsp;&nbsp;</a>
+                    <a href="{{ data_pack.url }}" class="btn btn-learn-more tooltipped" data-position="top" data-tooltip="View in the Nicolesy Store" target="_blank">Learn more&nbsp;&nbsp;&nbsp;</a>
                     <form id="info_form" action="{% url 'lg_app:add_fave' data_pack.id %}" method="post">
                         {% csrf_token %}
                         <input value="{{ data_pack.id }}" type="hidden" name="add_pack_fave">
-                        <button class="btn btn-wishlist" target="_blank">Add to wishlist&nbsp;&nbsp;&nbsp;</button>
+                        <button class="btn btn-wishlist tooltipped" data-position="bottom" data-tooltip="Add to your wishlist" target="_blank">Add to wishlist&nbsp;&nbsp;&nbsp;</button>
                     </form>
                 </div>
 
@@ -78,8 +81,4 @@
 
 {% else %} <h4>Please <a href=" {% url 'users:login_register' %}">Login</a></h4>
 {% endif %}
-<script type="text/javascript">
-    let pp = [{% for preset_pack in preset_packs %}"{{preset_pack.pack_name}}",{% endfor %}]
-    console.log(pp)
-</script>
 {% endblock %}
