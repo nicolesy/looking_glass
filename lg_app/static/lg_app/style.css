@@ -181,8 +181,9 @@ h4 {
 }
 
 .newsletter_signup {
-    margin-top: 50px;
-    padding-bottom: 50px;
+    margin-top: 100px;
+    padding-top: 50px;
+    padding-bottom: 75px;
     background-color: #fafafa;
 }
 
@@ -374,4 +375,27 @@ h4 {
 #upload_alert {
     color: black;
     margin: 0px !important;
+}
+
+.sub_header {
+    font-size: 24px;
+}
+
+.about_page_paragraph {
+    margin-bottom: 50px;
+}
+
+.about_page_paragraph a {
+    border-bottom: #FF8A65 solid;
+    color: inherit !important;
+}
+
+.about_page_paragraph a:hover {
+    color: white !important;
+    background-color: #FF8A65;
+    transition: 500ms;
+}
+
+.pack_info_details .price {
+    font-size: 20px;
 }
