@@ -107,8 +107,11 @@
 
     {% block content %}
     {% endblock %}
+
+    <!-- newsletter signup -->
     <div class="main newsletter_signup">
         <h4>Subscribe to the Newsletter</h4>
+        <p>Sign up to learn about new releases and tutorials</p>
         <div class="_form_65"></div>
     </div>
     <script src="https://nicolesy.activehosted.com/f/embed.php?id=65" type="text/javascript" charset="utf-8"></script>
@@ -130,7 +133,6 @@
                     <a class="fontawesome_footer tooltipped grey-text text-darken-3" data-position="top" data-tooltip="Nicolesy Store" href="https://store.nicolesy.com" target="_blank"><i class="far fa-shopping-cart"></i></a>
                 </div>
 
-
             </div>
         </div>
 
@@ -142,6 +144,7 @@
     </footer>
     <script type="text/javascript" src="{% static 'lg_app/script.js' %}"></script>
 
+    <!-- this js is for the drop-down, it wouldn't work in the static file -->
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
             var elems_dropdown = document.querySelectorAll('.dropdown-trigger');
