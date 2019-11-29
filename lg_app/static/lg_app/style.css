@@ -65,21 +65,51 @@ li a:hover {
 }
 
 .preset_packs {
+    width: 100%;
+    background-color: #f5f5f5;
+    margin-top: 50px;
+}
+
+.flex_select {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 30px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 750px !important;
+}
+
+.flex_select_list {
+    flex-grow: 1;
+    margin-right: 50px;
+}
+
+.pack_title {
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 42px;
+}
+
+.select-wrapper img {
+    height: 60px !important;
+    width: 50px !important;
+    margin: 0 20px !important;
+}
+
+.select-wrapper span {
+    height: 60px !important;
+    margin: 5px 0 !important;
+    font-size: 16px !important;
+    color: black !important;
 }
 
 .preset_list {
-    min-height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
-    margin-top: 40px;
+    margin: 0 50px;
 }
 
 .preset_name {
@@ -348,7 +378,25 @@ h4 {
     z-index: 101;
 }
 
+#loader_index {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+}
+
 #cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+}
+
+#cover_index {
     position: fixed;
     top: 0;
     left: 0;
