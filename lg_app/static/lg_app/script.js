@@ -16,7 +16,8 @@ let login_toggle = document.querySelector("#login_toggle")
 let register_toggle = document.querySelector("#register_toggle")
 
 
-// shows only the most recent thumbnails from the last image upload
+// updates the "after" image with the preset thumbnail that is clicked on
+// also scrolls the image to the before/after photos after clicking
 let image_after = document.querySelector("#image_after")
 let image_thumbnails = document.querySelectorAll(".image_thumbnail")
 let description_after = document.querySelector("#description_after")
@@ -27,36 +28,11 @@ for (let i = 0; i < image_thumbnails.length; ++i) {
         image_after.src = this.src
         description_after.innerHTML = ""
         description_after.innerHTML = image_thumbnails[i].title
+        image_after.scrollIntoView({
+            behavior: 'smooth'
+        });
     })
 }
-
-
-
-
-// changes the thumbnails visible when the drop - down changes
-let preset_packs = document.querySelector("#preset_packs")
-
-
-
-if (preset_packs != null) {
-    preset_packs.addEventListener("change", function() {
-        let divs = document.querySelectorAll(".preset_list")
-        let pack_info = document.querySelectorAll(".pack_info")
-        for (let i = 0; i < divs.length; ++i) {
-
-            if (preset_packs.value == divs[i].id) {
-                divs[i].style.display = ""
-                pack_info[i].style.display = ""
-            } else {
-                divs[i].style.display = "none"
-                pack_info[i].style.display = "none"
-            }
-
-        }
-    })
-}
-
-let loading_presets = ["Beautiful B&W", "Cross Processed", "Down Under", "Everyday", "Faded Floral", "Instant Hipster", "Lovely Landscapes", "Lush", "Muted", "Nostalgia Portrait", "Nuclear Grunge", "Retro Film", "Seattle B&W", "Stylized Food", "Teal &amp; Orange", "Vintage Fade"]
 
 let upload_button = document.querySelector("#upload_button")
 let upload_input = document.querySelector("#upload_input")
@@ -83,20 +59,9 @@ function buttonLoading1() {
     upload_button.innerText = "Uploading..."
 }
 
-function buttonLoading2() {
-    upload_button.innerText = "applying presets"
-}
-
-function buttonLoading3() {
-    upload_button.innerText = "creating thumbnails"
-}
-
-function buttonLoading4() {
-    upload_button.innerText = "finishing"
-}
-
 // prevents user from uploading a blank input
 // also displays text to show the user the upload is working
+// adds a loading screen
 upload_button.addEventListener("click", function() {
     if (upload_input.files.length == 0) {
         upload_button.disabled = true
@@ -108,35 +73,20 @@ upload_button.addEventListener("click", function() {
 
         let timer = 2000
         setTimeout("buttonLoading1()", timer)
-        timer += 5000
-        setTimeout("buttonLoading2()", timer)
-        timer += 2000
-        setTimeout("buttonLoading3()", timer)
-        timer += 4000
-        setTimeout("buttonLoading4()", timer)
-        timer += 8000
-
-
-
-        // 
-
-        // can't get this to work!!!
-        // let timer = 1000
-        // for (let i = 0; i < loading_presets.length; ++i) {
-        //     let current_preset = loading_presets[i]
-        //     console.log(current_preset)
-        // 
-        //     function loadPresets() {
-        //         upload_button.innerText = current_preset
-        //     }
-        //     setTimeout("loadPresets()", timer)
-        //     timer += 500
-        //     console.log(timer)
-        // 
-        // }
 
 
     }
+})
+
+// loading screen for index page when selecting a preset pack
+let select_list = document.querySelector("#select_list")
+let cover_index = document.querySelector("#cover_index")
+let loader_index = document.querySelector("#loader_index")
+
+
+select_list.addEventListener("click", function() {
+    cover_index.style.display = ""
+    loader_index.style.display = ""
 })
 
 
