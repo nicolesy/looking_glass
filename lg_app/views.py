@@ -26,11 +26,14 @@ def index(request):
     if latest_image == None:
         return render(request, "lg_app/index.html", {})
     
-    processed_images = [] # OLD CODE = latest_image.processed_images.all()
-    # existing_images = latest_image.processed_images.all()
+    processed_images = [] 
         
     if request.method == "POST":
         get_pack_id = request.POST.get("preset_pack_id")
+        
+        if get_pack_id == None:
+            get_pack_id = 7 # this defaults the preset pack to prevent an error if the button is pressed without selecting a preset pack
+        
         uploaded_image = request.user.uploaded_images.order_by('timestamp').last()
         code = ''.join([choice(ascii_letters + digits) for i in range(50)])
         user = request.user
@@ -49,7 +52,7 @@ def index(request):
                 lut = pillow_lut.load_cube_file(preset.preset_file.path)
                 image = Image.open(uploaded_image.user_img.path)
                 image = image.filter(lut)
-                watermark(image, text=(preset.preset_name + " | nicolesy.com"), pos=(30, 30))
+                watermark(image, text=(preset.preset_name + " (" + pack.pack_name + ") "+ " | nicolesy.com"), pos=(30, 30))
                 
                 image = image.convert('RGB')
                 output = BytesIO()
@@ -81,20 +84,18 @@ def index(request):
         "pack": pack,
     }
     
+    
     if request.user.is_authenticated:
         return render(request, "lg_app/index.html", context)
     else:
-        return HttpResponseRedirect(reverse('users:login_register'))
-
-    
-    if request.user.is_authenticated:
-        return render(request, "lg_app/index.html", new_context)
-    else:
-        return HttpResponseRedirect(reverse('users:login_register'))
+        return HttpResponseRedirect(reverse('users:login_register')) #redirects to login page if not registered
 
 
 def profile_page(request):
     preset_packs = request.user.favorite_packs.all()
+    print("=" *100)
+    print(preset_packs)
+    print("=" *100)
     
     context2 = {
         "preset_packs": preset_packs,
@@ -103,27 +104,11 @@ def profile_page(request):
     if request.user.is_authenticated:
         return render(request, "lg_app/profile.html", context2)
     else:
-        return HttpResponseRedirect(reverse('users:login_register'))
+        return HttpResponseRedirect(reverse('users:login_register')) # redirects to login page if not registered
 
 
 def about_page(request):
     return render(request, "lg_app/about.html", {})
-
-
-    
-# this is not finished and NEEDS WORK
-# def get_presets(request):
-#     db_presets = request.Preset.preset_pack.order_by("preset_name")
-#     presets = []
-#     for db_preset in db_presets:
-#         preset = db_presets.preset_name
-#         thumbnail = db_presets.preset_thumbnail
-#         presets.append ({
-#             "preset": preset,
-#             "thumbnail": thumbnail,
-#         })
-# 
-#     return JsonResponse({"presets": presets})
 
 
 # upload a photo and the processed photos are added to the database
@@ -142,13 +127,13 @@ def upload_photo(request):
     
     new_photo.save()
     
-    #######
+    ####### got this code online somewhere :)
     basewidth = 800 #determines the image width ###
     image = Image.open(new_photo.user_img.path)
     wpercent = (basewidth/float(image.size[0])) #resizes
     hsize = int((float(image.size[1])*float(wpercent))) #resizes
     image = image.resize((basewidth,hsize), Image.ANTIALIAS) #resizes
-    image.save(new_photo.user_img.path, format='JPEG', quality=50)
+    image.save(new_photo.user_img.path, format='JPEG', quality=80) #sets photo quality and format
     
     
     return HttpResponseRedirect(reverse('lg_app:index'))
@@ -157,16 +142,13 @@ def upload_photo(request):
 def watermark(photo, text, pos):
     drawing = ImageDraw.Draw(photo)
     white = (255, 255, 255)
-    font = ImageFont.truetype("HelveticaNeue.ttc", 24)
+    font = ImageFont.truetype("HelveticaNeue.ttc", 18)
     drawing.text(pos, text, fill=white, font=font)
     return photo
 
 
 def select_presets(request):
     presets_get = request.POST.get("preset_dropdown") #this gets the name from the select list
-    print("=" *100)
-    print(presets_get)
-    print("=" *100)
     preset_packs = PresetPack.objects.all().filter(presets_get)
     presets = Preset.objects.all().order_by("preset_name")
     processed_images = latest_image.processed_images.all()
@@ -178,7 +160,14 @@ def select_presets(request):
 
 def add_fave(request, pack_id):
     faves = request.POST['add_pack_fave']
-    pack = PresetPack.objects.get(id=pack_id) 
+    pack = PresetPack.objects.get(id=pack_id)
     pack.pack_fave.add(request.user)
+    
+    return HttpResponseRedirect(reverse('lg_app:profile_page'))
+
+def delete_fave(request, pack_id):
+    delete_fave_id = request.POST['delete_pack_fave']
+    delete_fave = PresetPack.objects.get(id=delete_fave_id)
+    delete_fave.pack_fave.remove(request.user)
     
     return HttpResponseRedirect(reverse('lg_app:profile_page'))
