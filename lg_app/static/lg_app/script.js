@@ -73,10 +73,10 @@ upload_button.addEventListener("click", function() {
 
         let timer = 2000
         setTimeout("buttonLoading1()", timer)
-
-
     }
 })
+
+
 
 // loading screen for index page when selecting a preset pack
 let select_list = document.querySelector("#select_list")
