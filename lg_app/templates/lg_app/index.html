@@ -14,6 +14,12 @@
 
 <div class="main">
     {% if user.is_authenticated %}
+    {% if latest_image.user_img is None %}
+    <div class="no_latest_img_div">
+        <h5>Upload a photo to get started:</h5>
+        <button id="no_latest_img" class="btn"><i class="fad fa-upload"></i></button>
+    </div>
+    {% else %}
     <div class="photos">
         <div><img class="before_after before" src="uploads/{{ latest_image.user_img }}" title="{{ latest_image.user_img }}">
             <div class="description">Before</div>
@@ -22,6 +28,7 @@
             <div id="description_after" class="description">After</div>
         </div>
     </div>
+
 </div>
 
 
@@ -42,7 +49,7 @@
         </div>
     </div>
 </form>
-
+{% endif %}
 
 <!-- thumbnails section -->
 <div class="pack_title">{{ pack.pack_name }}</div>
@@ -52,7 +59,8 @@
         <ul>
             <div class="preset_thumbnail">
                 <li>
-                    <img class="image_thumbnail tooltipped" data-position="top" data-tooltip="{{ image.preset.preset_name }} ({{ image.preset.preset_pack.pack_name }}) " src="{{image.image.url}}" title="{{ image.preset.preset_name }}">
+                    <img class="image_thumbnail tooltipped" data-position="top" data-tooltip="{{ image.preset.preset_name }} ({{ image.preset.preset_pack.pack_name }}) " src="{{image.image.url}}"
+                        title="{{ image.preset.preset_name }} ({{ image.preset.preset_pack.pack_name }})">
                 </li>
             </div>
         </ul>
@@ -92,4 +100,14 @@
 {% else %} <h4>Please <a href=" {% url 'users:login_register' %}">Login</a></h4>
 {% endif %}
 
+
+<script type="text/javascript">
+    // this triggers the modal when clicked (this is the initial index page a user sees if they have not yet uploaded a photo)
+    let no_latest_img = document.querySelector("#no_latest_img")
+    let modal_trigger = document.querySelector("#modal_trigger")
+
+    no_latest_img.addEventListener("click", function() {
+        modal_trigger.click();
+    })
+</script>
 {% endblock %}
