@@ -25,15 +25,15 @@
     <!-- favicon -->
     <link rel="icon" href="{% static 'lg_app/nicolesy.png' %}" />
 
-    <!-- Vue: development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
     <!-- materialize icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
 <body>
+    <div class="beta_badge">
+        <img src="{% static 'lg_app/images/beta.png' %}" width="150px">
+    </div>
     <div id="top_bar">LUT Preset Previewer</div>
     <div id="cover" style="display: none">
         <div id="loader" style="display:none">
@@ -46,7 +46,7 @@
         </div>
 
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="{% url 'lg_app:profile_page' %}">Profile</a></li>
+            <li><a href="{% url 'lg_app:profile_page' %}">Wishlist</a></li>
             <li class="divider"></li>
             <li><a href="{% url 'users:logout_user' %}">Logout</a></li>
         </ul>
@@ -58,6 +58,8 @@
                     <li>|</li>
                     <li><a href="{% url 'lg_app:about_page' %}">About</a></li>
                     <li>|</li>
+                    <li><a href="https://store.nicolesy.com" target="_blank">Shop</a></li>
+                    <li>|</li>
                     {% if user.is_authenticated %}
                     <li><a class="dropdown-trigger dropdown_trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
                     {% else %}
@@ -65,18 +67,20 @@
                     {% endif %}
 
                     <!-- Modal Trigger -->
-                    <a class="waves-effect waves-light btn modal-trigger {% if user.is_authenticated %} {% else %} disabled {% endif %}" href="#modal1">{% if user.is_authenticated %}Upload a photo{% else %}Login to upload{% endif %}</a>
+                    <a id="modal_trigger" class="waves-effect waves-light btn modal-trigger {% if user.is_authenticated %} {% else %} disabled {% endif %}" href="#modal1">{% if user.is_authenticated %}Photo upload <i
+                            class="material-icons right">file_upload</i>{% else %}Login to
+                        upload{% endif %}</a>
 
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal">
                         <div class="modal-content">
                             <h4>Photo upload</h4>
-                            <p id="upload_alert">Please upload a photo to get started:</p>
+                            <p id="upload_alert">Please upload a photo to get started (JPEG, PNG):</p>
                             <form action="{% url 'lg_app:upload_photo' %}" method="post" enctype="multipart/form-data">
 
                                 {% csrf_token %}
                                 <div class="file-field input-field upload_form">
-                                    <div class="select_btn btn grey lighten-2 grey-text text-darken-4 col s6 ">
+                                    <div class="select_btn btn col s6 ">
                                         <span>Select a photo</span>
                                         <input id="upload_input" type="file" name="upload_photo" accept="image/*" required>
                                         <input type="hidden" value={{ image.user_id }}>
