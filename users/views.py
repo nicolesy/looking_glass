@@ -13,10 +13,23 @@ def register_user(request):
     username = request.POST['username']
     email = request.POST['email']
     password = request.POST['password']
-    user = User.objects.create_user(username, email, password)
-    login(request, user)
     
-    return HttpResponseRedirect(reverse('lg_app:index'))
+    all_users = User.objects.all()
+    
+    for users in all_users:
+        if username is not None:
+            print("=" *100)
+            print("error username exists")
+            print("=" *100)
+            message = {
+                "error": "Username and/or email are already taken.",
+            }
+            return render(request, 'users/login.html', message)
+            # return HttpResponseRedirect(reverse('users:login_register'))
+        else:    
+            user = User.objects.create_user(username, email, password)
+            login(request, user)
+            return HttpResponseRedirect(reverse('lg_app:index'))
     
 def login_user(request):
     username = request.POST['username']
