@@ -18,11 +18,12 @@ import datetime
 def index(request):
     preset_packs = PresetPack.objects.all().order_by("pack_name")
     images = UploadedImage.objects.all()
-    latest_image = request.user.uploaded_images.order_by('timestamp').last()
     
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('users:login_register'))
 
+    latest_image = request.user.uploaded_images.order_by('timestamp').last()
+    
     if latest_image == None:
         return render(request, "lg_app/index.html", {})
     
@@ -83,7 +84,6 @@ def index(request):
         "processed_images": processed_images,
         "pack": pack,
     }
-    
     
     if request.user.is_authenticated:
         return render(request, "lg_app/index.html", context)
