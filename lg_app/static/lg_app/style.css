@@ -495,3 +495,14 @@ h4 {
     font-size: 12px !important;
     color: gray !important;
 }
+
+.center {
+    text-align: center;
+}
+
+.login_error {
+    margin-top: 50px;
+    color: red;
+    background-color: #ffb0b0;
+    padding: 10px 30px;
+}
