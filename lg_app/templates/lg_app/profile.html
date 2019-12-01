@@ -5,18 +5,17 @@
     <h6>{{ user.username }}'s wishlist</h6>
 </div>
 
-
 <div class="main">
-    {% if preset_packs.pack_fave is False %}
+    {% if not preset_packs %}
     <h5>Your wishlist is empty!</h5>
-    <p>Upload a photo with the link in the menu to preview LUT packs with your own photographs.</p>
+    <p class="center">Upload a photo with the link in the menu to preview LUT packs with your own photographs.<br>When you add a preset pack to your wishlist, it will show up here!</p>
     {% else %}
     <div class="favorite_list">
 
         {% for preset_pack in preset_packs %}
 
         <div class="favorite_packs">
-            {% if  preset_pack.pack_fave %}
+            {% if preset_pack.pack_fave %}
             <div><a href="{{ preset_pack.pack_url }}" target="_blank"><img class="preset_cover pack_info_thumbnail" src="{{preset_pack.pack_cover.url}}" title="{{preset_pack.pack_name}}"></a>
             </div>
             <div class="pack_name"><span>{{preset_pack.pack_name}}</span></div>
