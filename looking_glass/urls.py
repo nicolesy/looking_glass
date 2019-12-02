@@ -7,5 +7,5 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('lg_app.urls')),
-    path('user', include('users.urls')),
+    path('login/', include('users.urls')), #old name was 'user'
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
