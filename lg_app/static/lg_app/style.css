@@ -501,8 +501,7 @@ h4 {
 }
 
 .login_error {
-    margin-top: 50px;
+    margin-top: 20px;
     color: red;
-    background-color: #ffb0b0;
     padding: 10px 30px;
 }
