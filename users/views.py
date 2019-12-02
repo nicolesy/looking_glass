@@ -18,9 +18,6 @@ def register_user(request):
     
     for users in all_users:
         if username is not None:
-            print("=" *100)
-            print("error username exists")
-            print("=" *100)
             message = {
                 "error": "Username and/or email are already taken.",
             }
