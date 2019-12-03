@@ -139,8 +139,11 @@ def upload_photo(request):
 def watermark(photo, text, pos):
     drawing = ImageDraw.Draw(photo)
     white = (255, 255, 255)
-    font_path = '~/.fonts/HelveticaNeue.ttc'
+    # font_path = '~/.fonts/HelveticaNeue.ttc'
+    font_path = os.path.join(BASE_DIR, 'static/lg_app/HelveticaNeue.ttc')
+    
     font = ImageFont.truetype(font_path, 18)
+    # font = ImageFont.truetype('HelveticaNeue.ttc', 18) # this works locally
     drawing.text(pos, text, fill=white, font=font)
     return photo
 
