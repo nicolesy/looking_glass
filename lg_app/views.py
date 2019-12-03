@@ -93,9 +93,6 @@ def index(request):
 
 def profile_page(request):
     preset_packs = request.user.favorite_packs.all()
-    print("=" *100)
-    print(preset_packs)
-    print("=" *100)
     
     context2 = {
         "preset_packs": preset_packs,
@@ -138,7 +135,7 @@ def upload_photo(request):
     
     return HttpResponseRedirect(reverse('lg_app:index'))
 
-
+# function to add a watermark to the photo (used in the "index" view)
 def watermark(photo, text, pos):
     drawing = ImageDraw.Draw(photo)
     white = (255, 255, 255)
@@ -147,17 +144,18 @@ def watermark(photo, text, pos):
     return photo
 
 
-def select_presets(request):
-    presets_get = request.POST.get("preset_dropdown") #this gets the name from the select list
-    preset_packs = PresetPack.objects.all().filter(presets_get)
-    presets = Preset.objects.all().order_by("preset_name")
-    processed_images = latest_image.processed_images.all()
-    
-    context = {}
-    
-    return render(request, "lg_app/index.html", context)
+# def select_presets(request):
+#     presets_get = request.POST.get("preset_dropdown") #this gets the name from the select list
+#     preset_packs = PresetPack.objects.all().filter(presets_get)
+#     presets = Preset.objects.all().order_by("preset_name")
+#     processed_images = latest_image.processed_images.all()
+# 
+#     context = {}
+# 
+#     return render(request, "lg_app/index.html", context)
     
 
+# adds a preset pack to the user's wishlist
 def add_fave(request, pack_id):
     faves = request.POST['add_pack_fave']
     pack = PresetPack.objects.get(id=pack_id)
@@ -165,6 +163,8 @@ def add_fave(request, pack_id):
     
     return HttpResponseRedirect(reverse('lg_app:profile_page'))
 
+
+# removes a preset pack from the user's wishlist
 def delete_fave(request, pack_id):
     delete_fave_id = request.POST['delete_pack_fave']
     delete_fave = PresetPack.objects.get(id=delete_fave_id)
