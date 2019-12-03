@@ -453,7 +453,7 @@ h4 {
 }
 
 .about_page_paragraph a:hover {
-    color: white !important;
+    color: black !important;
     background-color: #FF8A65;
     transition: 500ms;
 }
