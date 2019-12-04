@@ -5,7 +5,7 @@ from django.utils.html import escape
 
 class PresetPack(models.Model):
     pack_name = models.CharField(max_length=100)
-    pack_description = models.TextField(max_length=200)
+    pack_description = models.TextField(max_length=500)
     pack_url = models.CharField(max_length=200)
     pack_thumbnail = models.ImageField(upload_to='images/cover_thumbnails', null=True, blank=True)
     pack_cover = models.ImageField(upload_to='images/cover_images', null=True, blank=True)
