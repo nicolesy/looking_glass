@@ -130,8 +130,8 @@ def upload_photo(request):
     wpercent = (basewidth/float(image.size[0])) #resizes
     hsize = int((float(image.size[1])*float(wpercent))) #resizes
     image = image.resize((basewidth,hsize), Image.ANTIALIAS) #resizes
-    # image.save(new_photo.user_img.path, format='JPEG', quality=80) #sets photo quality and format
-    image.save(new_photo.user_img.path) #sets photo quality and format
+    image.save(new_photo.user_img.path, format='JPEG', quality=80) #sets photo quality and format
+    # image.save(new_photo.user_img.path) #sets photo quality and format
     
     
     return HttpResponseRedirect(reverse('lg_app:index'))
