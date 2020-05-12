@@ -37,7 +37,8 @@ def login_user(request):
         message = {
             "error": "Incorrect password, or you are not yet registered.",
         }
-        return HttpResponseRedirect(reverse('users:login_register'))
+        # return HttpResponseRedirect(reverse('users:login_register'))
+        return render(request, 'users/login.html', message)
 
 
 def logout_user(request):
