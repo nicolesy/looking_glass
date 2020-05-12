@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances_collapsible = M.Collapsible.init(elems_collapsible, {});
 });
 
-let login = document.querySelector("#login")
+// let login = document.querySelector("#login")
 let register = document.querySelector("#register")
 let login_toggle = document.querySelector("#login_toggle")
 let register_toggle = document.querySelector("#register_toggle")
