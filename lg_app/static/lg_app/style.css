@@ -510,6 +510,6 @@ h4 {
     padding: 10px 30px;
 }
 
-#how_to_header {
-    color: red;
+.how_to_header {
+    color: blue;
 }
