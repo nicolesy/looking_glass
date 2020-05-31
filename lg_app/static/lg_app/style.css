@@ -511,7 +511,7 @@ h4 {
 }
 
 /* this is the info header section on the login/registration page */
-div .how_to_header {
+.how_to_header {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -519,9 +519,10 @@ div .how_to_header {
     background: #cbf0f2 !important;
     text-align: center !important;
     padding: 60px 20px 70px 20px !important;
+    color: red;
 }
 
-div .how_to_title {
+.how_to_title {
     font-size: 3em !important;
     text-transform: uppercase !important;
 }
