@@ -26,7 +26,9 @@ SECRET_KEY = 'jyk@yj^@1qm#gwa=t-z^hn^ub!6t-psk1q#(d9kg!i7p%_qj5o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'presets.nicolesy.com',
+]
 
 
 # Application definition
