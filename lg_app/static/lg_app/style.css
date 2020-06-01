@@ -511,7 +511,7 @@ h4 {
 }
 
 /* this is the info header section on the login/registration page */
-#how_to_header {
+.how_to_header {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
