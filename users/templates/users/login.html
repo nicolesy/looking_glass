@@ -18,6 +18,7 @@
         {{ error }}
         {% endif %}
     </div>
+    <div id="login_scroll"></div>
     <div class="login" id="login" style="display:none">
         <h3>Login</h3>
         <form action="{% url 'users:login_user' %}" method="post">
@@ -54,6 +55,17 @@
     let login_toggle = document.querySelector("#login_toggle")
     let register_toggle = document.querySelector("#register_toggle")
     let register_toggle_2 = document.querySelector("#register_toggle_2")
+    let login_scroll = document.querySelector("#login_scroll")
+
+
+    // creates smooth scroll on login page
+
+    register_toggle.addEventListener("click", function() {
+        login_scroll.scrollIntoView({
+            behavior: 'smooth'
+        })
+    })
+
 
     // loads the login page with only the "login" option
     register.style.display = "none"
