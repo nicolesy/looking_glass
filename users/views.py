@@ -51,23 +51,3 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse('users:login_register'))
-
-
-# change password view
-
-def change_password(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)
-            messages.success(request, _(
-                'Your password was successfully updated!'))
-            return redirect('accounts:change_password')
-        else:
-            messages.error(request, _('Please correct the error below.'))
-    else:
-        form = PasswordChangeForm(request.user)
-    return render(request, 'accounts/change_password.html', {
-        'form': form
-    })
