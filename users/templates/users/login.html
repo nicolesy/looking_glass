@@ -31,6 +31,21 @@
         <p>New user? <a id="register_toggle_2">Register here</a></p>
     </div>
 
+    <!-- Change password form -->
+    <div class="pw_change" id="pw_change">
+        <h3>Change Password</h3>
+        <form class="login" method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" placeholder="username" required />
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="password" required />
+            <button class="btn" type="submit">Save changes</button>
+        </form>
+    </div>
+
+    <!-- end change password form -->
+
     <div class="register" id="register" style="display:none">
         <h3>Register</h3>
         <form action="{% url 'users:register_user' %}" method="post">
@@ -46,6 +61,8 @@
         <p>Already have an account? <a id="login_toggle">Login here</a></p>
     </div>
 
+    <p>Forget your password? <a id="pw_change_toggle">Click here</a> to reset it.</p>
+
 </div>
 
 <script type="text/javascript">
@@ -54,27 +71,40 @@
     let login_toggle = document.querySelector("#login_toggle")
     let register_toggle = document.querySelector("#register_toggle")
     let register_toggle_2 = document.querySelector("#register_toggle_2")
+    let pw_change = document.querySelector("#pw_change")
+    let pw_change_toggle = document.querySelector("#pw_change_toggle")
 
     // loads the login page with only the "login" option
     register.style.display = "none"
     login.style.display = ""
+    pw_change.style.display = "none"
 
     // toggles the login form
     login_toggle.addEventListener("click", function() {
         register.style.display = "none"
         login.style.display = ""
+        pw_change.style.display = "none"
     })
 
     //toggles the register form
     register_toggle.addEventListener("click", function() {
         login.style.display = "none"
         register.style.display = ""
+        pw_change.style.display = "none"
     })
 
     //toggles the register form
     register_toggle_2.addEventListener("click", function() {
         login.style.display = "none"
         register.style.display = ""
+        pw_change.style.display = "none"
+    })
+
+    //toggles the change password form
+    pw_change_toggle.addEventListener("click", function() {
+        login.style.display = "none"
+        register.style.display = "none"
+        pw_change.style.display = ""
     })
 </script>
 {% endblock %}
