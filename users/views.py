@@ -4,9 +4,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
+
+# added password change stuff
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext as _
+from django import django.contrib.auth.views.password_change
 
 
 def login_register(request):
