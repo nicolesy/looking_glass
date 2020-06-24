@@ -35,7 +35,7 @@
     <!-- Change password form -->
     <div class="pw_change" id="pw_change">
         <h3>Change Password</h3>
-        <form class="login" method="post">
+        <form action="{% url 'users:change_password' %}" class'="login" method="post">
             {% csrf_token %}
             <label for="username">Username</label>
             <input type="text" name="username" placeholder="username" required />
