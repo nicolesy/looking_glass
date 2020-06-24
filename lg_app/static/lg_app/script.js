@@ -16,6 +16,7 @@ let login_toggle = document.querySelector("#login_toggle")
 let register_toggle = document.querySelector("#register_toggle")
 
 
+
 // updates the "after" image with the preset thumbnail that is clicked on
 // also scrolls the image to the before/after photos after clicking
 let image_after = document.querySelector("#image_after")
