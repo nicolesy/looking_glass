@@ -57,7 +57,7 @@ def index(request):
                 image = Image.open(uploaded_image.user_img.path)
                 image = image.filter(lut)
                 watermark(image, text=(preset.preset_name + " (" +
-                                       pack.pack_name + ") " + " | nicolesy.com"), pos=(100, 100))
+                                       pack.pack_name + ") " + " | nicolesy.com"), pos=(30, -100))
 
                 image = image.convert('RGB')
                 output = BytesIO()
