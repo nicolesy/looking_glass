@@ -56,10 +56,10 @@ def index(request):
                 lut = pillow_lut.load_cube_file(preset.preset_file.path)
                 image = Image.open(uploaded_image.user_img.path)
                 image = image.filter(lut)
-                shadow(image, text=(preset.preset_name + " (" +
-                                    pack.pack_name + ") " + " | nicolesy.com"), pos=(30 + 2, 50 + 2))
-                watermark(image, text=(preset.preset_name + " (" +
-                                       pack.pack_name + ") " + " | nicolesy.com"), pos=(30, 50))
+                shadow = shadow(image, text=(preset.preset_name + " (" +
+                                             pack.pack_name + ") " + " | nicolesy.com"), pos=(30 + 2, 50 + 2))
+                watermark(shadow, text=(preset.preset_name + " (" +
+                                        pack.pack_name + ") " + " | nicolesy.com"), pos=(30, 50))
 
                 image = image.convert('RGB')
                 output = BytesIO()
