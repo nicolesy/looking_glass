@@ -56,8 +56,10 @@ def index(request):
                 lut = pillow_lut.load_cube_file(preset.preset_file.path)
                 image = Image.open(uploaded_image.user_img.path)
                 image = image.filter(lut)
+                shadow(image, text=(preset.preset_name + " (" +
+                                    pack.pack_name + ") " + " | nicolesy.com"), pos=(30 + 2, 50 + 2))
                 watermark(image, text=(preset.preset_name + " (" +
-                                       pack.pack_name + ") " + " | nicolesy.com"), pos=(30, 250))
+                                       pack.pack_name + ") " + " | nicolesy.com"), pos=(30, 50))
 
                 image = image.convert('RGB')
                 output = BytesIO()
@@ -142,6 +144,18 @@ def upload_photo(request):
     return HttpResponseRedirect(reverse('lg_app:index'))
 
 # function to add a watermark to the photo (used in the "index" view)
+
+
+def shadow(photo, text, pos):
+    drawing = ImageDraw.Draw(photo)
+    white = (255, 255, 255)
+    # font_path = '~/.fonts/HelveticaNeue.ttc'
+    font_path = os.path.join(BASE_DIR, 'static/lg_app/HelveticaNeue.ttc')
+
+    font = ImageFont.truetype(font_path, 18)
+    # font = ImageFont.truetype('HelveticaNeue.ttc', 18) # this works locally
+    drawing.text(pos, text, fill=black, font=font)
+    return photo
 
 
 def watermark(photo, text, pos):
