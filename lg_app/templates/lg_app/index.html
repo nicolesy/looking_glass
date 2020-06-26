@@ -10,6 +10,7 @@
 
 <div class="sub_nav">
     <h6>Welcome, {{ user.username }}!</h6>
+    <p>Select a <a id="select_pack">preset pack below</a> to get started</p>
 </div>
 
 <div class="main">
@@ -35,7 +36,7 @@
 <!-- Select drop-down  -->
 <form action="" method='post'>
     {% csrf_token %}
-    <div class="preset_packs">
+    <div class="preset_packs" id="select_packs_scroll">
         <div class="container flex_select">
             <div class="input-field flex_select_list">
                 <select id="preset_packs" class="icons" name="preset_pack_id">
