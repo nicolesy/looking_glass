@@ -244,6 +244,13 @@ h4 {
     background-color: #fafafa;
 }
 
+.sub_nav p {
+    margin: 0 auto;
+    padding: 0 0 20px 0;
+    text-align: center;
+    background-color: #fafafa;
+}
+
 .favorite_packs {
     display: flex;
     flex-direction: column;
