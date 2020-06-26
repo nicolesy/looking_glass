@@ -94,3 +94,15 @@ select_list.addEventListener("click", function() {
 
 //disables right-click
 document.addEventListener('contextmenu', event => event.preventDefault());
+
+// creates scroll to preset pack from info at top
+window.onload = function() {
+    let select_pack = document.querySelector("#select_pack")
+    let select_packs_scroll = document.querySelector("#select_packs_scroll")
+
+    select_pack.addEventListener("click", function() {
+        select_packs_scroll.scrollIntoView({
+            behavior: 'smooth'
+        });
+    })
+}
