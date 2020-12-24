@@ -247,7 +247,7 @@ h4 {
 .sub_nav p {
     margin: 0 auto;
     padding: 0 0 20px 0;
-    text-align: center;
+    text-align: center !important;
     background-color: #fafafa;
 }
 
