@@ -165,8 +165,8 @@ img.image_thumbnail:hover {
 
 .before_after {
     object-fit: contain;
-    width: 75vh;
-    height: 75vh;
+    width: 50vh;
+    height: 50vh;
 }
 
 .upload_btn {
